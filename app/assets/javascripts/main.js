@@ -52,4 +52,59 @@ $(document).ready(function(){
       $("#invoice_total1").empty();
       $("#invoice_total1").val(Number(amount));
    })
+
+   $("body").on("click", "#invoice_button",function(){
+      // PRINTING
+      for(var i = 1; i < 11; i++){
+        var id = i.toString();
+        bind($("#"+id),$("#modal_" + id));
+      }
+
+      // // INVOICE NUMBER
+      // var n = $("#invoice_number").text();
+      // $("#modal_invoice_number").empty();
+      // $("#modal_invoice_number").append(n);
+      bind2($("#invoice_number"), $("#modal_invoice_number"))
+
+      // // SUBTOTAL
+      // var subtotal = $("#subtotal").text();
+      // $("#modal_subtotal").empty();
+      // $("#modal_subtotal").append(" " + subtotal);
+      bind2($("#subtotal"), $("#modal_subtotal"))
+
+      // gets all the row from the form
+      var rows = $(".item-row");
+      $("#modal_tbody").empty();
+
+      for(i = 0; i < rows.length; i ++){
+        var row = rows[i];
+        var name =  $(row).find(".item_name").val()
+        //creates empty row
+        $("#modal_tbody").append("<tr class='modal-item-row'></tr>");
+        $(".modal-item-row:last").append("<td>" + name + "</td>")
+
+        var desc = $(row).find(".item_desc").val();
+        $(".modal-item-row:last").append("<td>" + desc + "</td>");
+
+        var cost = $(row).find(".cost").val()
+        $(".modal-item-row:last").append("<td>" + cost + "</td>");
+
+
+        var qty =  $(row).find(".qty").val()
+        $(".modal-item-row:last").append("<td>" + qty + "</td>");
+
+        // price is span
+        var price =  $(row).find(".price").text()
+        var curr = $("#invoice_currency").val();
+        $(".modal-item-row:last").append("<td>" + price + " " + "<span>" + curr + "</span></td>")
+
+
+
+      }
+
+   });
+
+
+
+
 });

@@ -38,4 +38,19 @@ function bind1(){
   $('.qty').blur(update_price);
 }
 
+function bind(main, modal){
+  //get value from input
+  var n = main.val()
+
+  // find the element from the modal
+  modal.empty();
+  modal.append(n);
+}
+
+function bind2(main,modal){
+  var n = main.text()
+  modal.empty();
+  modal.append(" " + n)
+}
+
 
