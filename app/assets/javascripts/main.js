@@ -11,6 +11,12 @@ $(document).ready(function(){
     format: "yyyy-mm-dd"
   });
 
+
+  // date range pickter
+  $(".input-daterange").datepicker({
+    format: "yyyy-mm-dd"
+  });
+
   // append date after clicking on calendar
   $("#invoice_date").datepicker().on("changeDate",function(){
     var date = $(this).val()
